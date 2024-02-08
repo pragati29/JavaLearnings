@@ -1,4 +1,4 @@
-package org.example.java8Examples;
+package org.example.java8Examples.streamsExample;
 
 public class Singleton {
 

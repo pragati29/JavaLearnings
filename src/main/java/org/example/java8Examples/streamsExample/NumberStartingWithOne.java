@@ -1,4 +1,4 @@
-package org.example.java8Examples;
+package org.example.java8Examples.streamsExample;
 
 import java.util.*;
 import java.util.function.Function;
@@ -52,6 +52,7 @@ public class NumberStartingWithOne {
         //contains duplicates or not
         List<Integer> integerList = Arrays.stream(num).boxed().collect(Collectors.toList());
         Set<Integer> set =new HashSet<>(integerList);
+       // HashMap
         return integerList.size() == set.size();
     }
     public static void findMaxElement(int[]num){
@@ -63,6 +64,7 @@ public class NumberStartingWithOne {
     public static void dupElementsWdCount(List<String> li) {
 
         List<String> list=Arrays.asList("aa","ab","dq","aa");
+
 
         Map<String,Long> mapCount=li.stream().filter(x->Collections.frequency(list,x)>1).
                 collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
