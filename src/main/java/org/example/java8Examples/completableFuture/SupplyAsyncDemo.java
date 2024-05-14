@@ -1,5 +1,6 @@
 package org.example.java8Examples.completableFuture;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.java8Examples.completableFuture.database.EmployeeDatabase;
 import org.example.java8Examples.completableFuture.dto.Employee;
 
@@ -13,21 +14,21 @@ import java.util.concurrent.Executors;
 public class SupplyAsyncDemo {
 
     List<Employee> getEmployee() throws ExecutionException, InterruptedException {
-        ExecutorService executorService=Executors.newFixedThreadPool(5);
+        ExecutorService executors=Executors.newFixedThreadPool(5);
         CompletableFuture<List<Employee>> listCompletableFuture = CompletableFuture.supplyAsync(() -> {
             try {
-                System.out.println("Executed by "+Thread.currentThread().getName());
+                System.out.println("Thread name "+Thread.currentThread().getName());
                 return EmployeeDatabase.fetchEmployee();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        },executorService);
-       return listCompletableFuture.get();
+        },executors);
+        return listCompletableFuture.get();
     }
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         SupplyAsyncDemo supplyAsyncDemo=new SupplyAsyncDemo();
         List<Employee> employee = supplyAsyncDemo.getEmployee();
-        employee.forEach(System.out::println);
+        System.out.println(employee.size());
 
     }
 }

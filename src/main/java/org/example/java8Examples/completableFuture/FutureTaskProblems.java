@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 It cannot manually be COMPLETED
 Multiple Futures cannot be chained together
 we cannot combine multiple futures together
-no rpoper exception handling mechanism
+no proper exception handling mechanism
  */
 public class FutureTaskProblems {
 
@@ -25,6 +25,8 @@ public class FutureTaskProblems {
         List<Integer> integerList = futureTask.get();
 
         System.out.println(integerList);
+
+
 
 
     }

@@ -1,13 +1,20 @@
 package org.example.java8Examples.streamsExample;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class NumberStartingWithOne {
+
     public static void main(String[] args) {
         List<Integer> integerList= Arrays.asList(10,15,18,47,90);
-        integerList.stream().map(s->s+"").filter(s->s.startsWith("1")).forEach(System.out::println);
+      //  integerList.stream().map(s->s+"").filter(s->s.startsWith("1")).forEach(System.out::println);
+        String test ="Hi Aruna !! Welcome to the interview" ;
+        Map<Character, Long> collect = test.chars().mapToObj(s -> Character.valueOf((char) s))
+                .sorted().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        //System.out.println(collect);
+        dupElementsWdCount(null);
     }
 
     static void findFirstElement(List<Integer> integerList){
@@ -32,13 +39,13 @@ public class NumberStartingWithOne {
         // firstNonRepeated
         Character chars=input.chars().mapToObj(s->Character.toLowerCase(Character.valueOf((char) s)))
                 .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new,Collectors.counting()))
-                .entrySet().stream().filter(entry->entry.getValue()==1l)
+                .entrySet().stream().filter(entry->entry.getValue()==1)
                 .map(Map.Entry::getKey).findFirst().get();
 
         //first Repeated
-        input.chars().mapToObj(s->Character.toLowerCase(Character.valueOf((char) s)))
+        input.chars().mapToObj(s->Character.toLowerCase((char) s))
                 .collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting()))
-                .entrySet().stream().filter(entry->entry.getValue()>1l)
+                .entrySet().stream().filter(entry->entry.getValue()>1)
                 .map(Map.Entry::getKey).findFirst().get();
 
         //Input: String s = "string data to count each character";
@@ -51,7 +58,7 @@ public class NumberStartingWithOne {
     public boolean containsDuplicates(int[]num){
         //contains duplicates or not
         List<Integer> integerList = Arrays.stream(num).boxed().collect(Collectors.toList());
-        Set<Integer> set =new HashSet<>(integerList);
+        Set<Integer> set = new HashSet<>(integerList);
        // HashMap
         return integerList.size() == set.size();
     }
@@ -66,8 +73,9 @@ public class NumberStartingWithOne {
         List<String> list=Arrays.asList("aa","ab","dq","aa");
 
 
-        Map<String,Long> mapCount=li.stream().filter(x->Collections.frequency(list,x)>1).
+        Map<String,Long> mapCount = list.stream().filter(x->Collections.frequency(list,x)>1).
                 collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        System.out.println(mapCount);
     }
 
 
