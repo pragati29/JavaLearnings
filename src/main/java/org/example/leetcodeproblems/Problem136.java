@@ -4,13 +4,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public class Problem136 {
 
     public static void main(String[] args) {
-      //  singleNumber(new int[]{2,4,5,2,5});
+        singleNumber(new int[]{2,4,5,2,5});
       //   System.out.println("check % "+9%10);
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+      //  System.out.println(lengthOfLongestSubstring("abcabcbb"));
+
     }
 
     public static int singleNumber(int[] nums) {
@@ -25,7 +27,7 @@ public class Problem136 {
                 integerMap.put(nums[i], 1);
             }
         }
-
+        System.out.println(integerMap);
         for(Map.Entry<Integer,Integer> m:integerMap.entrySet()){
             if(m.getValue()==1){
                 k=m.getKey();
@@ -40,7 +42,7 @@ public class Problem136 {
         int count=0;
         int j=1;
         for(int i=0;i<s.length();i++){
-            if(s.charAt(i)!=s.charAt(j)&&s.charAt(j)!=s.charAt(j+1)){
+            if(s.charAt(i)!=s.charAt(j) && s.charAt(j)!=s.charAt(j+1)){
                 count++;
                 j++;
             }

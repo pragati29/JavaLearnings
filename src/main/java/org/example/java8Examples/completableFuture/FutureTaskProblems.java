@@ -25,10 +25,6 @@ public class FutureTaskProblems {
         List<Integer> integerList = futureTask.get();
 
         System.out.println(integerList);
-
-
-
-
     }
 
     private static void delay(int min){

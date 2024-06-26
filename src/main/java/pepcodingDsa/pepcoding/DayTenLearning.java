@@ -9,17 +9,17 @@ public class DayTenLearning {
     }
 
     private static void balancedBrackets(String s) {
-        Stack<Character> st=new Stack<>();
-        for(int i=0;i<s.length();i++){
-            char ch=s.charAt(i);
-            if(ch=='(' || ch=='{' ||ch=='[' ){
+        Stack<Character> st = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == '(' || ch == '{' || ch == '[') {
                 st.push(ch);
-            }else if(!st.empty()){
-                char chc=st.peek();
-                if((chc=='{' &&ch=='}')||(chc=='(' && ch==')')||(chc=='[' && ch==']')){
+            } else if (!st.empty()) {
+                char chc = st.peek();
+                if ((chc == '{' && ch == '}') || (chc == '(' && ch == ')') || (chc == '[' && ch == ']')) {
                     st.pop();
                 }
-            }else{
+            } else {
                 st.push(ch);
             }
         }

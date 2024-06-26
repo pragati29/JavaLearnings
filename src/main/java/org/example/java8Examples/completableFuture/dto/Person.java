@@ -3,10 +3,10 @@ package org.example.java8Examples.completableFuture.dto;
 import java.util.Objects;
 
 public class Person {
-    int id;
-    String name;
+    public int id;
+    public String name;
 
-    public Person(int id, String name) {
+   public Person(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -27,13 +27,13 @@ public class Person {
         this.name = name;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Person)) return false;
         Person person = (Person) o;
         return id == person.id && Objects.equals(name, person.name);
-    }
+    }*/
 /*
     @Override
     public int hashCode() {
